@@ -1,4 +1,3 @@
-Boilerplate
+Lickur
 ============
-
-App description goes here...
+Better'n Brefast
