@@ -1,0 +1,1 @@
+SECRET_KEY = 6i7vtc3robh78gerghoob77h7

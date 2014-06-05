@@ -1,0 +1,42 @@
+<div class="home-view">
+    <div>
+        show:
+        <div class="clearfix">
+            <div class="pull-left btn-group">
+                <button class="btn btn-default" ng-click="setPageSize(10)">10</button>
+                <button class="btn btn-default" ng-click="setPageSize(25)">25</button>
+                <button class="btn btn-default" ng-click="setPageSize(50)">50</button>
+                <button class="btn btn-default" ng-click="setPageSize(100)">100</button>
+            </div>
+
+            <div class="pull-right">
+                page:
+                <button class="btn btn-sm btn-default" ng-disabled="pagination.currentPage == 0" ng-click="pagination.currentPage=pagination.currentPage-1">&laquo;</button>
+                {{pagination.currentPage+1}}/{{pagination.numberOfPages()}}
+                <button class="btn btn-sm btn-default" ng-disabled="pagination.currentPage >= blogPosts.length/pagination.pageSize - 1" ng-click="pagination.currentPage=pagination.currentPage+1">&raquo;</button>
+            </div>
+        </div>
+    </div>
+    <div class="m-t-50">
+        <div class="product" ng-repeat="p in products | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
+            <span ng-click="product(p.id)">{{p.name}}</span>
+            <span class="pull-right product-open">+</span>
+            <div id="{{p.id.$oid}}" class="product-detail-closed">
+                <div>{{prod[p.id.$oid].sale_price}}</div>
+                <!-- <div>{{prod[p.id.$oid].regular_price}}</div> -->
+                <!-- <div>{{prod[p.id.$oid].bonus_miles}}</div> -->
+                <!-- <div>{{prod[p.id.$oid].cat1}}</div> -->
+                <!-- <div>{{prod1.cat2}}</div> -->
+                <!-- <div>{{prod1.cat3}}</div> -->
+                <!-- <div>{{prod1.package_type}}</div> -->
+                <!-- <div>{{prod1.package_volume}}</div> -->
+                <!-- <div>{{prod1.package_units}}</div> -->
+                <!-- <div>{{prod1.alcohol_content}}</div> -->
+                <!-- <div>{{prod1.price_per_alcohol}}</div> -->
+                <!-- <div>{{prod1.has_sale}}</div> -->
+                <!-- <img ng-src='{{prod1.image}}' /> -->
+                <!-- <div>{{prod1.product_number}}</div> -->
+            </div>
+        </div>
+    </div>
+</div>
