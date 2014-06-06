@@ -27,7 +27,7 @@
             <span class="pull-right">Alcoholic Value</span>
             <span class="pull-right">Category</span>
         </div>
-        <div class="product relative" ng-repeat="p in products | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
+        <div class="product relative" ng-repeat="p in products | filter:productSelected | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
             <span class="header icon" ng-if="product.">
                 <img src="/images/drinkicons/spirit.png" alt="">
             </span>
