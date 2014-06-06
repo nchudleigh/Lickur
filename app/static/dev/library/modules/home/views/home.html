@@ -1,10 +1,23 @@
 <div class="home-view">
-    <div class="form-group">
-        <input type="text" ng-model="productSelected" ng-change="pagination.numberOfPages()" typeahead="product.name for product in products | filter:$viewValue | limitTo:5" class="form-control">
+
+    <div class="m-b-25">
+        <div class="form-group row border radius four lets-get-fucking-wasted">
+            <!-- Jon, please fix my shitty styling :) - I tried but it was way too fucking shitty -->
+            <label class="col-xs-4 col-sm-3 text white">Get me drunk on: </label>
+            <select class="on-whut col-xs-8 col-sm-9" ng-model="drunkOn" ng-options="p.name for p in productTypes"></select>
+        </div>
     </div>
-    <div class="page-navi">
-        show:
+
+    <div class="form-group row border radius four m-b-25 search-area">
+        <label class="col-xs-2 col-sm-2 text white" for="search_field">Search:</label>
+        <input id="search_field" class="col-xs-10 col-sm-10" type="text" ng-model="productSelected" ng-change="pagination.numberOfPages()" typeahead="product.name for product in products | filter:$viewValue | limitTo:5" class="form-control" placeholder="I'm looking for something specific...">
+    </div>
+
+    <div class="m-b-25 page-navi row border radius four text white">
         <div class="clearfix">
+            <div class="pull-left show-label text white">
+                Show:
+            </div>
             <div class="pull-left btn-group">
                 <button class="btn btn-default" ng-click="setPageSize(10)">10</button>
                 <button class="btn btn-default" ng-click="setPageSize(25)">25</button>
@@ -13,67 +26,53 @@
             </div>
             
             <div class="pull-right">
-                page:
+                Page:
                 <button class="btn btn-sm btn-default" ng-disabled="pagination.currentPage == 0" ng-click="pagination.currentPage=pagination.currentPage-1">&laquo;</button>
                 {{pagination.currentPage+1}}/{{pagination.numberOfPages()}}
                 <button class="btn btn-sm btn-default" ng-disabled="pagination.currentPage >= blogPosts.length/pagination.pageSize - 1" ng-click="pagination.currentPage=pagination.currentPage+1">&raquo;</button>
             </div>
         </div>
     </div>
-    <div class="m-t-25">
-        <div class="form-group">
-            <!-- Jon, please fix my shitty styling :) -->
-            <label style="color:white">Get me drunk on</label>
-            <select class="form-control" ng-model="drunkOn" ng-options="p.name for p in productTypes"></select>
-        </div>
+
+    <div class="product relative">
+        <span>Name</span>
+        <span class="pull-right product-open m-l-10">+</span>
+        <span class="pull-right">Alcoholic Value</span>
     </div>
-    <div class="m-t-10">
-        <div class="product relative">
-            <span>Name</span>
-            <span class="pull-right product-open m-l-10">+</span>
-            <span class="pull-right">Alcoholic Value</span>
-        </div>
-        <div class="product relative" ng-repeat="p in products | filter:productSelected | filter:drunkOn | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
-            <span class="header icon" ng-if="p.cat === 'Spirits'">
-                <img src="/images/drinkicons/spirit.png" alt="">
-            </span>
-            <span class="header icon" ng-if="p.cat === 'Beer'">
-                <img src="/images/drinkicons/beerbottle.png" alt="">
-            </span>
-            <span class="header icon" ng-if="p.cat === 'Wine'">
-                <img src="/images/drinkicons/wine.png" alt="">
-            </span>
-            <span class="header icon" ng-if="p.cat === 'Cider'">
-                <img src="/images/drinkicons/cider.png" alt="">
-            </span>
-            <span class="header icon" ng-if="p.cat === 'Coolers and Cocktails'">
-                <img src="/images/drinkicons/coolersandcocktails.png" alt="">
-            </span>
-            <span class="header name">{{p.name}}</span>
-            <span class="pull-right product-open m-l-10">+</span>
-            <span class="pull-right m-l-10">{{p.price_per_alcohol}}</span>
-            <div id="{{p.id.$oid}}" class="relative" ng-class="{'product-detail-closed':!prod[p.id.$oid].open, 'product-detail-open':prod[p.id.$oid].open}">
-                <div class="col-sm-2 col-xs-2" ng-class="{'none':!prod[p.id.$oid].open}">
-                    <img class="img-responsive" ng-src='{{prod[p.id.$oid].data.image}}' />
-                </div>
-                <div class="col-sm-5 col-xs-5" ng-class="{'none':!prod[p.id.$oid].open}">
-                    <div class="clearfix"><div class="pull-left">Sale Price:</div><div class="pull-right">${{prod[p.id.$oid].data.sale_price/100}}</div></div>
-                    <div class="clearfix"><div class="pull-left">Regular Price:</div><div class="pull-right">${{prod[p.id.$oid].data.regular_price/100}}</div></div>
-                    <div class="clearfix"><div class="pull-left">Bonus Air Miles:</div><div class="pull-right">{{prod[p.id.$oid].data.bonus_miles}}</div></div>
-                    <div class="clearfix"><div class="pull-left">Category:</div><div class="pull-right">{{prod[p.id.$oid].data.cat1}}</div></div>
-                    <div class="clearfix"><div class="pull-left">Type:</div><div class="pull-right">{{prod[p.id.$oid].data.cat2}}</div></div>
-                    <div class="clearfix"><div class="pull-left">Specific Type:</div><div class="pull-right">{{prod[p.id.$oid].data.cat3}}</div></div>
-                </div>
-                <div class="col-sm-5 col-xs-5" ng-class="{'none':!prod[p.id.$oid].open}">
-                    <div class="clearfix"><div class="pull-left">Package:</div><div class="pull-right">{{prod[p.id.$oid].data.package_type}}</div></div>
-                    <div class="clearfix"><div class="pull-left">Volume/Unit:</div><div class="pull-right">{{prod[p.id.$oid].data.package_volume}}</div></div>
-                    <div class="clearfix"><div class="pull-left">Number of Units:</div><div class="pull-right">{{prod[p.id.$oid].data.package_units}}</div></div>
-                    <div class="clearfix"><div class="pull-left">Alcohol Content:</div><div class="pull-right">{{prod[p.id.$oid].data.alcohol_content}}</div></div>
-                    <div class="clearfix"><div class="pull-left">Price per Alcohol</div><div class="pull-right">{{prod[p.id.$oid].data.price_per_alcohol}}</div></div>
-                    <div class="clearfix"><div class="pull-left">On Sale:</div><div class="pull-right">{{prod[p.id.$oid].data.has_sale}}</div></div>
-                    <div class="clearfix"><div class="pull-left">Product Number:</div><div class="pull-right">{{prod.product_number}}</div></div>
-                </div>
+    <div class="product relative" ng-repeat="p in products | filter:productSelected | filter:drunkOn | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
+        <span class="header icon">
+            <img ng-if="p.cat === 'Spirits'" src="/images/drinkicons/spirit.png" alt="">
+            <img ng-if="p.cat === 'Beer'" src="/images/drinkicons/beerbottle.png" alt="">
+            <img ng-if="p.cat === 'Wine'" src="/images/drinkicons/wine.png" alt="">
+            <img ng-if="p.cat === 'Cider'" src="/images/drinkicons/cider.png" alt="">
+            <img ng-if="p.cat === 'Coolers and Cocktails'" src="/images/drinkicons/coolersandcocktails.png" alt="">
+            <img ng-if="p.cat === 'N/A'" src="/images/drinkicons/40oz.png" alt="">
+        </span>
+        <span class="header name">{{p.name}}</span>
+        <span class="pull-right product-open m-l-10">+</span>
+        <span class="pull-right m-l-10">{{p.price_per_alcohol}}</span>
+        <div id="{{p.id.$oid}}" class="relative" ng-class="{'product-detail-closed':!prod[p.id.$oid].open, 'product-detail-open':prod[p.id.$oid].open}">
+            <div class="col-sm-2 col-xs-4" ng-class="{'none':!prod[p.id.$oid].open}">
+                <img class="img-responsive" ng-src='{{prod[p.id.$oid].data.image}}' />
+            </div>
+            <div class="col-sm-5 col-xs-4" ng-class="{'none':!prod[p.id.$oid].open}">
+                <div class="detail clearfix"><div class="title pull-left">Sale Price:</div><div class="info pull-right">${{prod[p.id.$oid].data.sale_price/100}}</div></div>
+                <div class="detail clearfix"><div class="title pull-left">Regular Price:</div><div class="info pull-right">${{prod[p.id.$oid].data.regular_price/100}}</div></div>
+                <div class="detail clearfix"><div class="title pull-left">Bonus Air Miles:</div><div class="info pull-right">{{prod[p.id.$oid].data.bonus_miles}}</div></div>
+                <div class="detail clearfix"><div class="title pull-left">Category:</div><div class="info pull-right">{{prod[p.id.$oid].data.cat1}}</div></div>
+                <div class="detail clearfix"><div class="title pull-left">Type:</div><div class="info pull-right">{{prod[p.id.$oid].data.cat2}}</div></div>
+                <div class="detail clearfix"><div class="title pull-left">Specific Type:</div><div class="info pull-right">{{prod[p.id.$oid].data.cat3}}</div></div>
+            </div>
+            <div class="col-sm-5 col-xs-4" ng-class="{'none':!prod[p.id.$oid].open}">
+                <div class="detail clearfix"><div class="title pull-left">Package:</div><div class="info pull-right">{{prod[p.id.$oid].data.package_type}}</div></div>
+                <div class="detail clearfix"><div class="title pull-left">Volume/Unit:</div><div class="info pull-right">{{prod[p.id.$oid].data.package_volume}}</div></div>
+                <div class="detail clearfix"><div class="title pull-left">Number of Units:</div><div class="info pull-right">{{prod[p.id.$oid].data.package_units}}</div></div>
+                <div class="detail clearfix"><div class="title pull-left">Alcohol Content:</div><div class="info pull-right">{{prod[p.id.$oid].data.alcohol_content}}</div></div>
+                <div class="detail clearfix"><div class="title pull-left">Price per Alcohol</div><div class="info pull-right">{{prod[p.id.$oid].data.price_per_alcohol}}</div></div>
+                <div class="detail clearfix"><div class="title pull-left">On Sale:</div><div class="info pull-right">{{prod[p.id.$oid].data.has_sale}}</div></div>
+                <div class="detail clearfix"><div class="title pull-left">Product Number:</div><div class="info pull-right">{{prod[p.id.$oid].data.product_number}}</div></div>
             </div>
         </div>
     </div>
+
 </div>
