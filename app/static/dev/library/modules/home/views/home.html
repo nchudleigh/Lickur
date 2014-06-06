@@ -1,4 +1,7 @@
 <div class="home-view">
+    <div class="form-group">
+        <input type="text" ng-model="productSelected" ng-change="pagination.numberOfPages()" typeahead="product.name for product in products | filter:$viewValue | limitTo:5" class="form-control">
+    </div>
     <div class="page-navi">
         show:
         <div class="clearfix">
@@ -8,7 +11,7 @@
                 <button class="btn btn-default" ng-click="setPageSize(50)">50</button>
                 <button class="btn btn-default" ng-click="setPageSize(100)">100</button>
             </div>
-
+            
             <div class="pull-right">
                 page:
                 <button class="btn btn-sm btn-default" ng-disabled="pagination.currentPage == 0" ng-click="pagination.currentPage=pagination.currentPage-1">&laquo;</button>
@@ -18,22 +21,26 @@
         </div>
     </div>
     <div class="m-t-50">
+        <div class="product relative">
+            <span>Name</span>
+            <span class="pull-right product-open m-l-10">+</span>
+            <span class="pull-right">Alcoholic Value</span>
+            <span class="pull-right">Category</span>
+        </div>
         <div class="product relative" ng-repeat="p in products | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
-            
             <span class="header icon" ng-if="product.">
                 <img src="/images/drinkicons/spirit.png" alt="">
             </span>
-
             <span class="header icon" ng-if="product.">
                 <img src="/images/drinkicons/beercan.png" alt="">
             </span>
-            
             <span class="header icon" ng-if="product.">
                 <img src="/images/drinkicons/beerbottle.png" alt="">
             </span>
-            
             <span class="header name">{{p.name}}</span>
-            <span class="pull-right product-open">+</span>
+            <span class="pull-right product-open m-l-10">+</span>
+            <span class="pull-right m-l-10">{{p.price_per_alcohol}}</span>
+            <span class="pull-right m-l-10">{{p.cat}}</span>
             <div id="{{p.id.$oid}}" class="relative" ng-class="{'product-detail-closed':!prod[p.id.$oid].open, 'product-detail-open':prod[p.id.$oid].open}">
                 <div class="col-sm-2" ng-class="{'none':!prod[p.id.$oid].open}">
                     <img class="img-responsive" ng-src='{{prod[p.id.$oid].data.image}}' />
