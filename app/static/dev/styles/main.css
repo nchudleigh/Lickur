@@ -133,6 +133,11 @@ body {
 .product .header .name {
     font-size: 1.5rem;
 }
-.product .header .icon {
-    /*unsure if necessary*/
+.product .header.icon img {
+    background-color: #fff;
+    display: inline-block
+    height: 16px;
+    max-height: 16px;
+    vertical-align: middle;
+    width: auto;
 }
