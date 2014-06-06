@@ -25,27 +25,31 @@
             <span>Name</span>
             <span class="pull-right product-open m-l-10">+</span>
             <span class="pull-right">Alcoholic Value</span>
-            <span class="pull-right">Category</span>
         </div>
         <div class="product relative" ng-repeat="p in products | filter:productSelected | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
-            <span class="header icon" ng-if="product.">
+            <span class="header icon" ng-if="p.cat === 'Spirits'">
                 <img src="/images/drinkicons/spirit.png" alt="">
             </span>
-            <span class="header icon" ng-if="product.">
-                <img src="/images/drinkicons/beercan.png" alt="">
-            </span>
-            <span class="header icon" ng-if="product.">
+            <span class="header icon" ng-if="p.cat === 'Beer'">
                 <img src="/images/drinkicons/beerbottle.png" alt="">
+            </span>
+            <span class="header icon" ng-if="p.cat === 'Wine'">
+                <img src="/images/drinkicons/wine.png" alt="">
+            </span>
+            <span class="header icon" ng-if="p.cat === 'Cider'">
+                <img src="/images/drinkicons/cider.png" alt="">
+            </span>
+            <span class="header icon" ng-if="p.cat === 'Coolers and Cocktails'">
+                <img src="/images/drinkicons/coolersandcocktails.png" alt="">
             </span>
             <span class="header name">{{p.name}}</span>
             <span class="pull-right product-open m-l-10">+</span>
             <span class="pull-right m-l-10">{{p.price_per_alcohol}}</span>
-            <span class="pull-right m-l-10">{{p.cat}}</span>
             <div id="{{p.id.$oid}}" class="relative" ng-class="{'product-detail-closed':!prod[p.id.$oid].open, 'product-detail-open':prod[p.id.$oid].open}">
-                <div class="col-sm-2" ng-class="{'none':!prod[p.id.$oid].open}">
+                <div class="col-sm-2 col-xs-2" ng-class="{'none':!prod[p.id.$oid].open}">
                     <img class="img-responsive" ng-src='{{prod[p.id.$oid].data.image}}' />
                 </div>
-                <div class="col-sm-5" ng-class="{'none':!prod[p.id.$oid].open}">
+                <div class="col-sm-5 col-xs-5" ng-class="{'none':!prod[p.id.$oid].open}">
                     <div class="clearfix"><div class="pull-left">Sale Price:</div><div class="pull-right">{{prod[p.id.$oid].data.sale_price}}</div></div>
                     <div class="clearfix"><div class="pull-left">Regular Price:</div><div class="pull-right">{{prod[p.id.$oid].data.regular_price}}</div></div>
                     <div class="clearfix"><div class="pull-left">Bonus Air Miles:</div><div class="pull-right">{{prod[p.id.$oid].data.bonus_miles}}</div></div>
@@ -53,7 +57,7 @@
                     <div class="clearfix"><div class="pull-left">Type:</div><div class="pull-right">{{prod[p.id.$oid].data.cat2}}</div></div>
                     <div class="clearfix"><div class="pull-left">Specific Type:</div><div class="pull-right">{{prod[p.id.$oid].data.cat3}}</div></div>
                 </div>
-                <div class="col-sm-5" ng-class="{'none':!prod[p.id.$oid].open}">
+                <div class="col-sm-5 col-xs-5" ng-class="{'none':!prod[p.id.$oid].open}">
                     <div class="clearfix"><div class="pull-left">Package:</div><div class="pull-right">{{prod[p.id.$oid].data.package_type}}</div></div>
                     <div class="clearfix"><div class="pull-left">Volume/Unit:</div><div class="pull-right">{{prod[p.id.$oid].data.package_volume}}</div></div>
                     <div class="clearfix"><div class="pull-left">Number of Units:</div><div class="pull-right">{{prod[p.id.$oid].data.package_units}}</div></div>
