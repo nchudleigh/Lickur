@@ -1,5 +1,5 @@
 <div class="home-view">
-    <div>
+    <div class="page-navi">
         show:
         <div class="clearfix">
             <div class="pull-left btn-group">
@@ -19,7 +19,20 @@
     </div>
     <div class="m-t-50">
         <div class="product relative" ng-repeat="p in products | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
-            <span>{{p.name}}</span>
+            
+            <span class="header icon" ng-if="product.">
+                <img src="/images/drinkicons/spirit.png" alt="">
+            </span>
+
+            <span class="header icon" ng-if="product.">
+                <img src="/images/drinkicons/beercan.png" alt="">
+            </span>
+            
+            <span class="header icon" ng-if="product.">
+                <img src="/images/drinkicons/beerbottle.png" alt="">
+            </span>
+            
+            <span class="header name">{{p.name}}</span>
             <span class="pull-right product-open">+</span>
             <div id="{{p.id.$oid}}" class="relative" ng-class="{'product-detail-closed':!prod[p.id.$oid].open, 'product-detail-open':prod[p.id.$oid].open}">
                 <div class="col-sm-2" ng-class="{'none':!prod[p.id.$oid].open}">
