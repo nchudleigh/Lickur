@@ -6,7 +6,6 @@ from . import products
 from app import db
 
 
-
 @products.route('/', methods=['GET'])
 def get_products():
   products=db['products'].find()
@@ -18,6 +17,7 @@ def get_products():
     o['id'] = p['_id']
     o['name'] = p['name']
     o['price_per_alcohol'] = p['price_per_alcohol']
+    o['cat'] = p['cat1']
     p_list.append(o)
 
   return json_util.dumps({
@@ -28,8 +28,6 @@ def get_products():
       'data':p_list
     }
   }), 200
-
-
 
 @products.route('/<p_id>', methods=['GET'])
 def get_product(p_id=None):
@@ -60,4 +58,3 @@ def get_product(p_id=None):
       'data':product
       }
     }),200
-
