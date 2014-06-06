@@ -6,6 +6,7 @@
     padding: 10px;
     border: 1px solid #CCC;
     margin-bottom:-1px;
+    cursor: pointer;
 
 }
 .product:first-child {
@@ -22,6 +23,18 @@
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
+}
+.product-detail-closed {
+    height: 0px;
+    transition:height 500ms;
+    -webkit-transtion:height 500ms;
+}
+.product-detail-open {
+    height: 175px;
+    transition:height 500ms;
+    -webkit-transition:height 500ms;
+    -moz-transition:height 500ms;
+    -ms-transition:height 500ms;
 }
 /******************/
 /*** NAVIGATION ***/

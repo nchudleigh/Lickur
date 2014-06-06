@@ -18,24 +18,30 @@
         </div>
     </div>
     <div class="m-t-50">
-        <div class="product" ng-repeat="p in products | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
-            <span ng-click="product(p.id)">{{p.name}}</span>
+        <div class="product relative" ng-repeat="p in products | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
+            <span>{{p.name}}</span>
             <span class="pull-right product-open">+</span>
-            <div id="{{p.id.$oid}}" class="product-detail-closed">
-                <div>{{prod[p.id.$oid].sale_price}}</div>
-                <!-- <div>{{prod[p.id.$oid].regular_price}}</div> -->
-                <!-- <div>{{prod[p.id.$oid].bonus_miles}}</div> -->
-                <!-- <div>{{prod[p.id.$oid].cat1}}</div> -->
-                <!-- <div>{{prod1.cat2}}</div> -->
-                <!-- <div>{{prod1.cat3}}</div> -->
-                <!-- <div>{{prod1.package_type}}</div> -->
-                <!-- <div>{{prod1.package_volume}}</div> -->
-                <!-- <div>{{prod1.package_units}}</div> -->
-                <!-- <div>{{prod1.alcohol_content}}</div> -->
-                <!-- <div>{{prod1.price_per_alcohol}}</div> -->
-                <!-- <div>{{prod1.has_sale}}</div> -->
-                <!-- <img ng-src='{{prod1.image}}' /> -->
-                <!-- <div>{{prod1.product_number}}</div> -->
+            <div id="{{p.id.$oid}}" class="relative" ng-class="{'product-detail-closed':!prod[p.id.$oid].open, 'product-detail-open':prod[p.id.$oid].open}">
+                <div class="col-sm-2" ng-class="{'none':!prod[p.id.$oid].open}">
+                    <img class="img-responsive" ng-src='{{prod[p.id.$oid].data.image}}' />
+                </div>
+                <div class="col-sm-5" ng-class="{'none':!prod[p.id.$oid].open}">
+                    <div class="clearfix"><div class="pull-left">Sale Price:</div><div class="pull-right">{{prod[p.id.$oid].data.sale_price}}</div></div>
+                    <div class="clearfix"><div class="pull-left">Regular Price:</div><div class="pull-right">{{prod[p.id.$oid].data.regular_price}}</div></div>
+                    <div class="clearfix"><div class="pull-left">Bonus Air Miles:</div><div class="pull-right">{{prod[p.id.$oid].data.bonus_miles}}</div></div>
+                    <div class="clearfix"><div class="pull-left">Category:</div><div class="pull-right">{{prod[p.id.$oid].data.cat1}}</div></div>
+                    <div class="clearfix"><div class="pull-left">Type:</div><div class="pull-right">{{prod[p.id.$oid].data.cat2}}</div></div>
+                    <div class="clearfix"><div class="pull-left">Specific Type:</div><div class="pull-right">{{prod[p.id.$oid].data.cat3}}</div></div>
+                </div>
+                <div class="col-sm-5" ng-class="{'none':!prod[p.id.$oid].open}">
+                    <div class="clearfix"><div class="pull-left">Package:</div><div class="pull-right">{{prod[p.id.$oid].data.package_type}}</div></div>
+                    <div class="clearfix"><div class="pull-left">Volume/Unit:</div><div class="pull-right">{{prod[p.id.$oid].data.package_volume}}</div></div>
+                    <div class="clearfix"><div class="pull-left">Number of Units:</div><div class="pull-right">{{prod[p.id.$oid].data.package_units}}</div></div>
+                    <div class="clearfix"><div class="pull-left">Alcohol Content:</div><div class="pull-right">{{prod[p.id.$oid].data.alcohol_content}}</div></div>
+                    <div class="clearfix"><div class="pull-left">Price per Alcohol</div><div class="pull-right">{{prod[p.id.$oid].data.price_per_alcohol}}</div></div>
+                    <div class="clearfix"><div class="pull-left">On Sale:</div><div class="pull-right">{{prod[p.id.$oid].data.has_sale}}</div></div>
+                    <div class="clearfix"><div class="pull-left">Product Number:</div><div class="pull-right">{{prod.product_number}}</div></div>
+                </div>
             </div>
         </div>
     </div>

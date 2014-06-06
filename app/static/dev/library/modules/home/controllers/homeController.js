@@ -22,32 +22,25 @@
 
         homeService.all().then(function(r) {
             $scope.products = r.data.result.data;
-            $scope.tableParams = new ngTableParams({
-                page: 1,
-                count: 10
-            }, {
-                total: $scope.products.length,
-                getData: function($defer, params) {
-                    console.log($scope.products.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                    $defer.resolve($scope.products.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                }
-            });
+            for(var i=$scope.products.length;i--;) {
+                $scope.prod[$scope.products[i].id.$oid] = {open: false};
+            }
         }, function(r) {
             growl.addErrorNotification(r.data.error);
         })
 
         $scope.product = function(p_id) {
-            if(!$scope.prod[p_id.$oid] && !$scope.prod[p_id.$oid].open) {
+            if(!$scope.prod[p_id.$oid].open) {
                 homeService.one(p_id.$oid).then(function(r) {
-                    $scope.prod[p_id.$oid] = {
-                        data: r.data.result.data,
-                        open: true
-                    }
+                    $timeout(function() {
+                        $scope.prod[p_id.$oid].data = r.data.result.data;                        
+                    }, 250);
+                    $scope.prod[p_id.$oid].open = true;
                 }, function(r) {
                     console.log('error ::: ', r);
                 });
             } else {
-                $('#'+p_id.$oid).empty();
+                delete $scope.prod[p_id.$oid].data;
                 $scope.prod[p_id.$oid].open = false;
             }
         };
