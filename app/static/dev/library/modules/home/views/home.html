@@ -20,14 +20,21 @@
             </div>
         </div>
     </div>
-    <div class="m-t-50">
+    <div class="m-t-25">
+        <div class="form-group">
+            <!-- Jon, please fix my shitty styling :) -->
+            <label style="color:white">Get me drunk on</label>
+            <select class="form-control" ng-model="drunkOn" ng-options="p.name for p in productTypes"></select>
+        </div>
+    </div>
+    <div class="m-t-10">
         <div class="product relative">
             <span>Name</span>
             <span class="pull-right product-open m-l-10">+</span>
             <span class="pull-right">Alcoholic Value</span>
             <span class="pull-right">Category</span>
         </div>
-        <div class="product relative" ng-repeat="p in products | filter:productSelected | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
+        <div class="product relative" ng-repeat="p in products | filter:productSelected | filter:drunkOn | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
             <span class="header icon" ng-if="product.">
                 <img src="/images/drinkicons/spirit.png" alt="">
             </span>
@@ -46,8 +53,8 @@
                     <img class="img-responsive" ng-src='{{prod[p.id.$oid].data.image}}' />
                 </div>
                 <div class="col-sm-5" ng-class="{'none':!prod[p.id.$oid].open}">
-                    <div class="clearfix"><div class="pull-left">Sale Price:</div><div class="pull-right">{{prod[p.id.$oid].data.sale_price}}</div></div>
-                    <div class="clearfix"><div class="pull-left">Regular Price:</div><div class="pull-right">{{prod[p.id.$oid].data.regular_price}}</div></div>
+                    <div class="clearfix"><div class="pull-left">Sale Price:</div><div class="pull-right">${{prod[p.id.$oid].data.sale_price/100}}</div></div>
+                    <div class="clearfix"><div class="pull-left">Regular Price:</div><div class="pull-right">${{prod[p.id.$oid].data.regular_price/100}}</div></div>
                     <div class="clearfix"><div class="pull-left">Bonus Air Miles:</div><div class="pull-right">{{prod[p.id.$oid].data.bonus_miles}}</div></div>
                     <div class="clearfix"><div class="pull-left">Category:</div><div class="pull-right">{{prod[p.id.$oid].data.cat1}}</div></div>
                     <div class="clearfix"><div class="pull-left">Type:</div><div class="pull-right">{{prod[p.id.$oid].data.cat2}}</div></div>

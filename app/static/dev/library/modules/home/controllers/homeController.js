@@ -8,6 +8,15 @@
 
         $scope.productSelected = '';
 
+        $scope.productTypes = [
+            {name: ''},
+            {name: 'Beer'},
+            {name: 'Cider'},
+            {name: 'Cocktail'},
+            {name: 'Spirit'},
+            {name: 'Wine'}
+        ];
+
         $scope.pagination = {
             currentPage: 0,
             pageSize: 10,
