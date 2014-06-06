@@ -6,6 +6,8 @@
     .controller('homeController', function($scope, $state, $templateCache, $timeout, growl, ngTableParams, homeService) {
         $scope.prod = {};
 
+        $scope.productSelected = '';
+
         $scope.pagination = {
             currentPage: 0,
             pageSize: 10,
