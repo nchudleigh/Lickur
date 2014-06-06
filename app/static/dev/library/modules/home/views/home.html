@@ -9,8 +9,8 @@
     </div>
 
     <div class="form-group row border radius four m-b-25 search-area">
-        <label class="col-xs-2 col-sm-2 text white" for="search_field">Search:</label>
-        <input id="search_field" class="col-xs-10 col-sm-10" type="text" ng-model="productSelected" ng-change="pagination.numberOfPages()" typeahead="product.name for product in products | filter:$viewValue | limitTo:5" class="form-control" placeholder="I'm looking for something specific...">
+        <label class="col-xs-3 col-sm-2 text white" for="search_field">or search:</label>
+        <input id="search_field" class="col-xs-9 col-sm-10" type="text" ng-model="productSelected" ng-change="pagination.numberOfPages()" typeahead="product.name for product in products | filter:$viewValue | limitTo:5" class="form-control" placeholder="...for something specific...">
     </div>
 
     <div class="m-b-25 page-navi row border radius four text white">
