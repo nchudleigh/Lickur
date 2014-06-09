@@ -5,7 +5,7 @@
         <div class="form-group row border radius four lets-get-fucking-wasted">
             <!-- Jon, please fix my shitty styling :) - I tried but it was way too fucking shitty -->
             <label class="col-xs-4 col-sm-3 text white">Get me drunk on: </label>
-            <select class="on-whut col-xs-8 col-sm-9" ng-model="drunkOn" ng-options="p.name for p in productTypes"></select>
+            <select class="on-whut col-xs-8 col-sm-9" ng-init="drunkOn=productTypes[0]" ng-model="drunkOn" ng-options="p.name for p in productTypes"></select>
         </div>
     </div>
 
