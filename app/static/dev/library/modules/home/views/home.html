@@ -4,14 +4,14 @@
     <div class="m-b-25">
         <div class="form-group row border radius four lets-get-fucking-wasted">
             <!-- Jon, please fix my shitty styling :) - I tried but it was way too fucking shitty -->
-            <label class="col-xs-4 col-sm-3 text white">Get me drunk on: </label>
-            <select class="on-whut col-xs-8 col-sm-9" ng-init="drunkOn=productTypes[0]" ng-model="drunkOn" ng-options="p.name for p in productTypes"></select>
+            <label class="col-xs-4 col-sm-3 text white" for="select_field">Get me drunk on: </label>
+            <select id="select_field" class="on-whut col-xs-8 col-sm-9" ng-init="drunkOn=productTypes[0]" ng-model="drunkOn" ng-options="p.name for p in productTypes"></select>
         </div>
     </div>
 
-    <div class="form-group row border radius four m-b-25 search-area">
+    <div class="form-group row border radius four m-b-25 search-area lets-get-fucking-wasted">
         <label class="col-xs-3 col-sm-2 text white" for="search_field">or search:</label>
-        <input id="search_field" class="col-xs-9 col-sm-10" type="text" ng-model="productSelected" ng-change="pagination.numberOfPages()" typeahead="product.name for product in products | filter:$viewValue | limitTo:5" class="form-control" placeholder="...for something specific...">
+        <input id="search_field" class="on-whut col-xs-9 col-sm-10" type="text" ng-model="productSelected" ng-change="pagination.numberOfPages()" typeahead="product.name for product in products | filter:$viewValue | limitTo:5" class="form-control" placeholder="...for something specific...">
     </div>
 
     <div class="m-b-25 page-navi row border radius four text white">
