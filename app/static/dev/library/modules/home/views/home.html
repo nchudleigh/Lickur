@@ -1,3 +1,4 @@
+
 <div class="home-view">
 
     <div class="m-b-25">
@@ -39,7 +40,8 @@
         <span class="pull-right product-open m-l-10">+</span>
         <span class="pull-right">Alcoholic Value</span>
     </div>
-    <div class="product relative" ng-repeat="p in products | filter:productSelected | filter:drunkOn | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
+
+    <div class="product relative" ng-repeat="p in products | filter:productSelected | filter: { cat: drunkOn.value } | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
         <span class="header icon">
             <img ng-if="p.cat === 'Spirits'" src="/images/drinkicons/spirit.png" alt="">
             <img ng-if="p.cat === 'Beer'" src="/images/drinkicons/beerbottle.png" alt="">

@@ -9,12 +9,12 @@
         $scope.productSelected = '';
 
         $scope.productTypes = [
-            {name: ''},
-            {name: 'Beer'},
-            {name: 'Cider'},
-            {name: 'Cocktail'},
-            {name: 'Spirit'},
-            {name: 'Wine'}
+            {name: 'Anything', value:''},
+            {name: 'Beer', value:'Beer'},
+            {name: 'Cider', value:'Cider'},
+            {name: 'Coolers and Cocktails', value:'Coolers and Cocktails'},
+            {name: 'Spirits', value:'Spirits'},
+            {name: 'Wine', value:'Wine'}
         ];
 
         $scope.pagination = {
