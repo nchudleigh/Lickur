@@ -41,7 +41,7 @@
         })
 
         $scope.product = function(p_id) {
-            if(!$scope.prod[p_id.$oid].open) {
+            if(!$scope.prod[p_id.$oid].open && !$scope.prod[p_id.$oid].data) {
                 homeService.one(p_id.$oid).then(function(r) {
                     $timeout(function() {
                         $scope.prod[p_id.$oid].data = r.data.result.data;                        
@@ -50,8 +50,9 @@
                 }, function(r) {
                     console.log('error ::: ', r);
                 });
+            } else if(!$scope.prod[p_id.$oid].open && $scope.prod[p_id.$oid].data) {
+                $scope.prod[p_id.$oid].open = true;
             } else {
-                delete $scope.prod[p_id.$oid].data;
                 $scope.prod[p_id.$oid].open = false;
             }
         };

@@ -70,15 +70,15 @@
                 <div class="detail clearfix"><div class="title pull-left">Alcohol Content:</div><div class="info pull-right">{{prod[p.id.$oid].data.alcohol_content}}</div></div>
                 <div class="detail clearfix"><div class="title pull-left">Price per Alcohol</div><div class="info pull-right">{{prod[p.id.$oid].data.price_per_alcohol}}</div></div>
                 <div class="detail clearfix"><div class="title pull-left">On Sale:</div><div class="info pull-right">{{prod[p.id.$oid].data.has_sale}}</div></div>
-                <div class="detail clearfix"><div class="title pull-left">Product Number:</div><div class="info pull-right">
-                <!-- This isnt properly rendering the product number onto the url ON CLICK, it actually renders the link fine-->
-                    <a ng-href="http://www.lcbo.com/lcbo-ear/lcbo/product/details.do?language=EN&itemNumber={{prod[p.id.$oid].data.product_number}}" >
-                    {{prod[p.id.$oid].data.product_number}}
-                    </a>
-                    
-                </div></div>
+                <div class="detail clearfix"><div class="title pull-left">Product Number:</div>
+                    <div class="info pull-right">
+                    <!-- This isnt properly rendering the product number onto the url ON CLICK, it actually renders the link fine-->
+                        <a target="_blank" ng-href="http://www.lcbo.com/lcbo-ear/lcbo/product/details.do?language=EN&itemNumber={{prod[p.id.$oid].data.product_number}}" >
+                            {{prod[p.id.$oid].data.product_number}}
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
