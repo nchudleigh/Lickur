@@ -37,6 +37,7 @@ for p in product_list:
   prod['has_sale'] = p['has_clearance_sale']
   prod['image'] = p['image_thumb_url']
   prod['product_number'] = p['product_no']
+  prod['total_volume'] = p['volume_in_milliliters']
 
   db['products'].insert(prod)
 
