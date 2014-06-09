@@ -17,7 +17,8 @@ def get_products():
     o['id'] = p['_id']
     o['name'] = p['name']
     if p['regular_price'] > 100:
-        o['price_per_alcohol'] = ((p['package_volume']*p['package_units'])*p['alcohol_content'])/(p['regular_price']/100)
+        o['price_per_alcohol'] = (p['total_volume']*p['alcohol_content'])/(p['regular_price'])
+        #o['price_per_alcohol'] = ((p['package_volume']*p['package_units'])*p['alcohol_content'])/(p['regular_price']/100)
     else:
         o['price_per_alcohol'] = 0
     o['cat'] = p['cat1']
