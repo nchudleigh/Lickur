@@ -97,10 +97,10 @@ html, body, * {
     font-family: 'Raleway', sans-serif;
 }
 body {
-    background-color: #2D2D2D;
+    background-color: #FFF;
 }
 .text.white {
-    color: #fff !important;
+    color: #2d2d2d !important;
 }
 .border.radius.four {
     -webkit-border-radius: 4px;
@@ -130,13 +130,18 @@ body {
 
 /* Search Area */
 .search-area {
-    background-color: #5D5D5D;
+    background-color: #f9ac24;
     padding: 1.2rem 0.6rem;
 }
 .search-area label {
     margin-bottom: 0 !important;
     padding-top: 0.4rem;
 }
+
+.search-field {
+    border-radius:4px;
+}
+
 
 
 /* Pagination Styling */
