@@ -1,16 +1,17 @@
+
 <div class="home-view">
 
     <div class="m-b-25">
         <div class="form-group row border radius four lets-get-fucking-wasted">
             <!-- Jon, please fix my shitty styling :) - I tried but it was way too fucking shitty -->
-            <label class="col-xs-4 col-sm-3 text white">Get me drunk on: </label>
-            <select class="on-whut col-xs-8 col-sm-9" ng-model="drunkOn" ng-options="p.name for p in productTypes"></select>
+            <label class="col-xs-4 col-sm-3 text white" for="select_field">Get me drunk on: </label>
+            <select id="select_field" class="on-whut col-xs-8 col-sm-9" ng-init="drunkOn=productTypes[0]" ng-model="drunkOn" ng-options="p.name for p in productTypes"></select>
         </div>
     </div>
 
-    <div class="form-group row border radius four m-b-25 search-area">
+    <div class="form-group row border radius four m-b-25 search-area lets-get-fucking-wasted">
         <label class="col-xs-3 col-sm-2 text white" for="search_field">or search:</label>
-        <input id="search_field" class="col-xs-9 col-sm-10" type="text" ng-model="productSelected" ng-change="pagination.numberOfPages()" typeahead="product.name for product in products | filter:$viewValue | limitTo:5" class="form-control" placeholder="...for something specific...">
+        <input id="search_field" class="on-whut col-xs-9 col-sm-10" type="text" ng-model="productSelected" ng-change="pagination.numberOfPages()" typeahead="product.name for product in products | filter:$viewValue | limitTo:5" class="form-control" placeholder="...for something specific...">
     </div>
 
     <div class="m-b-25 page-navi row border radius four text white">
@@ -39,7 +40,8 @@
         <span class="pull-right product-open m-l-10">+</span>
         <span class="pull-right">Alcoholic Value</span>
     </div>
-    <div class="product relative" ng-repeat="p in products | filter:productSelected | filter:drunkOn | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
+
+    <div class="product relative" ng-repeat="p in products | filter:productSelected | filter: { cat: drunkOn.value } | startFrom:pagination.currentPage*pagination.pageSize | limitTo:pagination.pageSize" ng-click="product(p.id)">
         <span class="header icon">
             <img ng-if="p.cat === 'Spirits'" src="/images/drinkicons/spirit.png" alt="">
             <img ng-if="p.cat === 'Beer'" src="/images/drinkicons/beerbottle.png" alt="">
@@ -70,15 +72,15 @@
                 <div class="detail clearfix"><div class="title pull-left">Alcohol Content:</div><div class="info pull-right">{{prod[p.id.$oid].data.alcohol_content}}</div></div>
                 <div class="detail clearfix"><div class="title pull-left">Price per Alcohol</div><div class="info pull-right">{{prod[p.id.$oid].data.price_per_alcohol}}</div></div>
                 <div class="detail clearfix"><div class="title pull-left">On Sale:</div><div class="info pull-right">{{prod[p.id.$oid].data.has_sale}}</div></div>
-                <div class="detail clearfix"><div class="title pull-left">Product Number:</div><div class="info pull-right">
-                <!-- This isnt properly rendering the product number onto the url ON CLICK, it actually renders the link fine-->
-                    <a ng-href="http://www.lcbo.com/lcbo-ear/lcbo/product/details.do?language=EN&itemNumber={{prod[p.id.$oid].data.product_number}}" >
-                    {{prod[p.id.$oid].data.product_number}}
-                    </a>
-                    
-                </div></div>
+                <div class="detail clearfix"><div class="title pull-left">Product Number:</div>
+                    <div class="info pull-right">
+                    <!-- This isnt properly rendering the product number onto the url ON CLICK, it actually renders the link fine-->
+                        <a target="_blank" ng-href="http://www.lcbo.com/lcbo-ear/lcbo/product/details.do?language=EN&itemNumber={{prod[p.id.$oid].data.product_number}}" >
+                            {{prod[p.id.$oid].data.product_number}}
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
