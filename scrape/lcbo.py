@@ -21,6 +21,8 @@ for i in range(page, last_page):
 print(product_list.__len__())
 
 for p in product_list:
+  if p['is_dead']==True or p['is_discontinued']==True:
+      continue
   prod = {}
   prod['name'] = p['name']
   prod['sale_price'] = p['price_in_cents']
