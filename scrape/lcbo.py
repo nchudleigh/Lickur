@@ -11,7 +11,7 @@ print(r.json()['result'].__len__())
 
 product_list = r.json()['result']
 page = r.json()['pager']['current_page']
-last_page = r.json()['pager']['final_page']
+last_page = r.json()['pager']['total_pages']
 
 for i in range(page, last_page):
   #
