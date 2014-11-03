@@ -1,10 +1,10 @@
-##Lickur - [Go to web app](www.lickur.com)
-###Authors:
-- Jon Mendes
-- Zach McGrenere
-- Neil Chudleigh
+## Lickur - [lickur.com](www.lickur.com)
+#### Authors
+- [Jonathan Mendes](https://github.com/jonathanmendes)
+- [Zach McGrenere](https://github.com/ziethan)
+- [Neil Chudleigh](www.neilchudleigh.com)
 
-####Stack
+#### Stack
 - Angular.js
 - Flask
 - MongoDB
