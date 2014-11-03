@@ -1,3 +1,10 @@
-Lickur
+Lickur - [Go to web app](www.lickur.com)
 ============
-Better'n Brefast
+Authors:
+Jon Mendes
+Zach McGrenere
+Neil Chudleigh
+
+Angular.js
+Flask
+MongoDB
