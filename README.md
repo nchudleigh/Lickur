@@ -3,8 +3,3 @@
 - [Jonathan Mendes](https://github.com/jonathanmendes)
 - [Zach McGrenere](https://github.com/ziethan)
 - [Neil Chudleigh](www.neilchudleigh.com)
-
-#### Stack
-- Angular.js
-- Flask
-- MongoDB
